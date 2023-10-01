@@ -1,0 +1,104 @@
+::ng-deep {
+  .prod-details {
+    background-color: #fafafa;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    padding: 25px;
+    margin: 0px 10px;
+
+    .main {
+      display: flex;
+      flex-direction: column;
+      min-width: 350px;
+
+      .section-1 {
+        display: flex;
+        gap: 20px;
+        padding-bottom: 10px;
+
+        .name {
+          font-weight: 500;
+          font-size: 25px;
+          color: #b2586e;
+        }
+
+        .rating {
+          .bi-start {
+            padding: 5px;
+          }
+
+          .star-fill {
+            color: #b2586e;
+          }
+        }
+      }
+
+      .section-2 {
+        display: flex;
+        gap: 20px;
+
+        .prod-img {
+          height: 130px;
+          min-width: 220px;
+          border: 2px solid #c1c1c1;
+        }
+
+        .emp-details {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+
+          .emp {
+            display: flex;
+            flex-direction: column;
+
+            .name {
+              font-weight: 600;
+            }
+
+            .role {
+              color: #9c9c9c;
+              font-weight: 500;
+            }
+          }
+        }
+      }
+    }
+
+    .tab-section {
+        border: 1px solid #c1c1c1;
+        height: 300px;
+
+      .mat-mdc-tab-group {
+        .mat-mdc-tab-header {
+            max-width: 450px;
+
+          .mat-mdc-tab-list {
+            .mat-mdc-tab-labels {
+
+              .mdc-tab--active {
+                opacity: 1;
+                transition: 0.5s;
+                border: 1px solid #c1c1c1;
+
+                .mdc-tab__content {
+                    .mdc-tab__text-label {
+                        color: #b2586e !important;
+                    }
+                }
+              }
+            }
+
+            .mdc-tab-indicator__content {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .mat-mdc-tab-group.mat-primary .mat-ink-bar {
+        background-color: #213a40 !important;
+      }
+    }
+  }
+}
