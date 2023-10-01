@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class ProductDetailsComponent {
 
+  catalogImages: any[] = ['img1', 'img2', 'img3', 'img4']
+
 }
