@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
@@ -19,7 +20,8 @@ import { ProductCatalogComponent } from './product-catalog/product-catalog.compo
   imports: [
     CommonModule,
     ProductRoutingModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
   ],
   exports: [
     ProductComponent

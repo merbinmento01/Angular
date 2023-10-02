@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-custom-filter-popup',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./custom-filter-popup.component.scss']
 })
 export class CustomFilterPopupComponent {
+
+  constructor(private modalRef: MatDialogRef<CustomFilterPopupComponent>) {}
+
+  closeDialog() {
+    this.modalRef.close()
+  }
 
 }

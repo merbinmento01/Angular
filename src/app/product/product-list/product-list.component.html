@@ -1,14 +1,14 @@
 <div class="product-list">
   <div class="header">
     <div class="header-btn-group">
-      <button class="add">New</button>
+      <button class="add" (click)="openAddNewProduct()">New</button>
       <button class="delete">Delete</button>
     </div>
     <div class="header-btn-group">
       <button class="export">Export</button>
     </div>
     <div class="header-btn-group">
-      <button class="filter"><i class="bi bi-funnel-fill"></i></button>
+      <button class="filter" (click)="openCustomFIlter()"><i class="bi bi-funnel-fill"></i></button>
       <button class="addColumns">Add Coulumns</button>
     </div>
     <div class="header-btn-group header-search">
