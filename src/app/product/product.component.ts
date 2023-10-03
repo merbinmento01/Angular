@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ProductComponent {
 
+  selectedProduct: any;
+
+  onProductChange(event: any) {
+    this.selectedProduct = event;    
+  }
+
 }
