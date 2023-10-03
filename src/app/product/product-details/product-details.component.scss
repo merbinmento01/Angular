@@ -70,7 +70,7 @@
     }
 
     .tab-section {
-        height: 350px;
+        height: 400px;
 
       .mat-mdc-tab-group {
         .mat-mdc-tab-header {
@@ -101,7 +101,7 @@
 
         .mat-mdc-tab-body-wrapper {
             border: 1px solid #c1c1c1;
-            height: 250px;
+            height: 300px;
         }
 
         .mat-mdc-tab-body-content {
@@ -134,12 +134,18 @@
             
             .cat-img {
                 height: 120px;
-                width: 180px;
+                width: 160px;
                 border: 2px solid #c1c1c1;
                 display: flex;
                 justify-content: center ;
             }
         }
+      }
+
+      .grey {
+        height: 100px;
+        border: 1px solid #c1c1c1;
+        background-color: #c1c1c140;
       }
     }
   }
