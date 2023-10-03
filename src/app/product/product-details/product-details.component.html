@@ -14,11 +14,11 @@
         <div class="emp-details">
             <div class="emp">
                 <span class="role">LEAD ENGINEER</span>
-                <span class="name">{{selectedProduct?.leadEngineer?.Employee_Full_Name}}</span>
+                <span class="name" (click)="openEmployeeInfo(selectedProduct?.leadEngineer)">{{selectedProduct?.leadEngineer?.Employee_Full_Name}}</span>
             </div>
             <div class="emp">
                 <span class="role">SUPPORT TECH</span>
-                <span class="name">{{selectedProduct?.techSupport?.Employee_Full_Name}}</span>
+                <span class="name" (click)="openEmployeeInfo(selectedProduct?.techSupport)">{{selectedProduct?.techSupport?.Employee_Full_Name}}</span>
             </div>
         </div>
     </div>

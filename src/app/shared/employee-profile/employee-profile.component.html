@@ -1,1 +1,49 @@
-<p>employee-profile works!</p>
+<div class="emp-profile">
+    <div class="img-container">
+        <div class="img-wrapper">
+            <img *ngIf="employeeInfo?.Employee_Picture" [src]="'data:image/jpeg;base64,'+employeeInfo.Employee_Picture" alt="">
+        </div>
+        <div class="name">{{employeeInfo?.Employee_Full_Name}}</div>
+    </div>
+    <div class="emp-info">
+        <div class="header">
+            <span class="about">{{employeeInfo?.Employee_Title}}</span>
+            <i class="bi bi-x-lg" (click)="closeDialog()"></i>
+        </div>
+        <span class="profile">{{employeeInfo?.Employee_Personal_Profile}}</span>
+        <div class="body">    
+            <div class="label">
+                <span>First Name:</span>
+                <span>{{employeeInfo?.Employee_First_Name}}</span>
+            </div>
+            <div class="label">
+                <span>Last Name:</span>
+                <span>{{employeeInfo?.Employee_Last_Name}}</span>
+            </div>
+            <div class="label">
+                <span>Email:</span>
+                <span>{{employeeInfo?.Employee_Email}}</span>
+            </div>
+            <div class="label">
+                <span>Bith Date:</span>
+                <span>{{employeeInfo?.Employee_Birth_Date | date: 'dd/MM/YYYY'}}</span>
+            </div>
+            <div class="label">
+                <span>Skype:</span>
+                <span>{{employeeInfo?.Employee_Skype}}</span>
+            </div>
+            <div class="label">
+                <span>Phone:</span>
+                <span>{{employeeInfo?.Employee_Mobile_Phone}}</span>
+            </div>
+            <div class="label">
+                <span>Address:</span>
+                <span>{{employeeInfo?.Employee_Address}}</span>
+            </div>
+            <div class="label">
+                <span>City:</span>
+                <span>{{employeeInfo?.Employee_City}}</span>
+            </div>
+        </div>
+    </div>
+</div>
