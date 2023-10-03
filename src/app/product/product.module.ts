@@ -10,7 +10,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
-
+import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
 @NgModule({
   declarations: [
     ProductComponent,
@@ -23,6 +24,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     ProductRoutingModule,
     MatTabsModule,
     MatDialogModule,
+    TableModule,
+    InputTextModule,
     NgApexchartsModule
   ],
   exports: [

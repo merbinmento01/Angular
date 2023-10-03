@@ -14,7 +14,7 @@ import { ImagePreviewComponent } from './image-preview/image-preview.component';
     AddProductComponent,
     CustomFilterPopupComponent,
     EmployeeProfileComponent,
-    ImagePreviewComponent
+    ImagePreviewComponent,
   ],
   imports: [
     CommonModule
