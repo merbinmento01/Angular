@@ -34,11 +34,9 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onChange(event: any) {
-    if (event?.tab?.textLabel && !this.salesChartData?.length) {
+    if (event?.tab?.textLabel == 'Sales And Opportunities') {
       this.initializeChart();
-    } else {
-      // this.salesChart.destroy();
-    } 
+    }
   }
 
   formatChartData() {
