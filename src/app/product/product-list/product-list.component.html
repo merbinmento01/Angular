@@ -24,8 +24,9 @@
     [showCurrentPageReport]="true"
     [globalFilterFields]="['col.field']"
     currentPageReportTemplate="page {first} of {last} of ({totalRecords} entries)"
-    [rows]="10" 
-    selectionMode="single" [(selection)]="selectedProduct">
+    [rows]="10" (selectionChange)="onRowSelect($event)"
+    selectionMode="single" [(selection)]="selectedProduct"
+    >
       <ng-template pTemplate="header" let-columns>
         <tr>
             <th class="tablehead" *ngFor="let col of columns">

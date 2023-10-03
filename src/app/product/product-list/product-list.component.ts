@@ -19,11 +19,6 @@ export class ProductListComponent implements OnInit {
   selectedProduct: any ;
 
   constructor(private modal: MatDialog, private dataService: DataService) {}
-  // data: any[] = [
-  //   { id: 1, name: 'Item 1', price: 10 },
-  //   { id: 2, name: 'Item 2', price: 15 },
-  //   { id: 3, name: 'Item 3', price: 20 },
-  // ];
  
   ngOnInit(): void {
     this.cols = [
@@ -36,11 +31,6 @@ export class ProductListComponent implements OnInit {
       { field: 'Product_Backorder', header: 'Backorder' }
   ];
     this.getProductsData();
-    // this.cols  = [
-    //   { field: 'id', header: 'ID' },
-    //   { field: 'name', header: 'Name' },
-    //   { field: 'price', header: 'Price' },
-    // ];
   }
  
 
@@ -49,9 +39,14 @@ export class ProductListComponent implements OnInit {
     this.dataService.getProductData().subscribe((res) => {
       this.productData = res.ProductData;
       this.selectedProduct = this.productData[0];
-      this.emitSelectedProduct();
+      this.onRowSelect(this.selectedProduct);
       console.log('productData', this.productData);
     })
+  }
+
+  onRowSelect(event: any) {
+    this.selectedProduct = event;
+    this.emitSelectedProduct();
   }
 
   emitSelectedProduct() {

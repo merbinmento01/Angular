@@ -3,8 +3,8 @@
         <div class="section-1">
         <div class="name">{{selectedProduct?.Product_Name}}</div>
         <div class="rating">
-            <i class="bi bi-star star-fill" *ngFor="let item of [].constructor(selectedProduct?.product?.Product_Consumer_Rating)"></i>
-            <i class="bi bi-star" *ngFor="let item of [].constructor(5-selectedProduct?.product?.Product_Consumer_Rating)"></i>
+            <i class="bi bi-star star-fill" *ngFor="let item of [].constructor(productRating)"></i>
+            <i class="bi bi-star" *ngFor="let item of [].constructor(5-productRating)"></i>
         </div>
     </div>
     <div class="section-2">

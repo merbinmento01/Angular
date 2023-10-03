@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeProfileComponent } from 'src/app/shared/employee-profile/employee-profile.component';
 import ApexCharts from 'apexcharts';
@@ -8,15 +8,25 @@ import ApexCharts from 'apexcharts';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnChanges {
   
   @Input() selectedProduct: any;
   salesChartOptions: any;
   salesChart: any;
   salesChartData: any[] = [];
   catalogImages: any[] = ['img1', 'img2', 'img3', 'img4'];
+  productRating: number = 0;
 
   constructor(private modal: MatDialog) {}
+
+  ngOnChanges(simpleChanges: SimpleChanges) {
+    this.productRating = simpleChanges['selectedProduct']?.currentValue?.product?.Product_Consumer_Rating;
+    this.productRating = Math.floor(this.productRating);
+    this.formatChartData();
+    if(this.salesChart) {
+      this.salesChart.updateSeries(this.salesChartData)
+    }
+  }
 
   ngOnInit(): void {
     console.log('selectedProduct', this.selectedProduct);
@@ -40,6 +50,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   formatChartData() {
+    this.salesChartData = [];
     const sales: any = { name: 'Sales', data: [] };
     const opportunities: any = { name: 'Opportunities', data: [] };
     this.selectedProduct?.salesAndOpportunities.forEach((salesAndOpp: any) => {
