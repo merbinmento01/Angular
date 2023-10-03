@@ -24,7 +24,7 @@
     </div>
     </div>
     <div class="tab-section">
-        <mat-tab-group>
+        <mat-tab-group [preserveContent]="true" (selectedTabChange)="onChange($event)">
             <mat-tab label="Catalog Images">
                 <div class="catalog-section">
                 <i class="bi bi-chevron-compact-left"></i>
@@ -46,7 +46,7 @@
             </div>
             </mat-tab>
             <mat-tab label="Sales And Opportunities">
-                <div class="graph"></div>
+                <div id="salesChart" class="graph"></div>
             </mat-tab>
         </mat-tab-group>
     </div>

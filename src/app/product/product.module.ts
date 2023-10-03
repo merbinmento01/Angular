@@ -8,6 +8,7 @@ import { ProductComponent } from './product.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ProductCatalogComponent } from './product-catalog/product-catalog.compo
     CommonModule,
     ProductRoutingModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    NgApexchartsModule
   ],
   exports: [
     ProductComponent

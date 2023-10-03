@@ -103,6 +103,10 @@
             border: 1px solid #c1c1c1;
             height: 250px;
         }
+
+        .mat-mdc-tab-body-content {
+            overflow: hidden;
+        }
       }
 
       .mat-mdc-tab-group.mat-primary .mat-ink-bar {
