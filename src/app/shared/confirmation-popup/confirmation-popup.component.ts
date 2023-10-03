@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-confirmation-popup',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ConfirmationPopupComponent {
 
+  
+  constructor(private modalRef: MatDialogRef<ConfirmationPopupComponent>) {}
+
+  closeDialog() {
+    this.modalRef.close()
+  }
 }

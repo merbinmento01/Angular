@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header-btn-group">
       <button class="add" (click)="openAddNewProduct()">New</button>
-      <button class="delete">Delete</button>
+      <button class="delete" (click)="confirmationProduct()">Delete</button>
     </div>
     <div class="header-btn-group">
       <button class="export">Export</button>
@@ -22,14 +22,15 @@
     <p-table [value]="productData" [columns]="cols"  
     [paginator]="true" 
     [showCurrentPageReport]="true"
+    [globalFilterFields]="['col.field']"
     currentPageReportTemplate="page {first} of {last} of ({totalRecords} entries)"
     [rows]="10" 
     selectionMode="single" [(selection)]="selectedProduct">
       <ng-template pTemplate="header" let-columns>
         <tr>
-            <th  *ngFor="let col of columns">
+            <th class="tablehead" *ngFor="let col of columns">
               {{ col.header }}
-              <p-columnFilter type="text" field="col.field" display="menu"></p-columnFilter>
+              <p-columnFilter  field="col.field" display="menu"></p-columnFilter>
             </th>
         </tr>
       </ng-template>

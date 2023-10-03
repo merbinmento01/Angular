@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { AddProductComponent } from 'src/app/shared/add-product/add-product.component';
+import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
 import { CustomFilterPopupComponent } from 'src/app/shared/custom-filter-popup/custom-filter-popup.component';
 
 @Component({
@@ -74,6 +75,13 @@ export class ProductListComponent implements OnInit {
       panelClass: 'add-product'
     })
   }
-  
+  confirmationProduct(){
+    this.modal.open(ConfirmationPopupComponent, {
+      minWidth: '30vw',
+      width: '20vw',
+      height: '10vw',
+      panelClass: 'confirmation-product'
+    })
+  }
 
 }
