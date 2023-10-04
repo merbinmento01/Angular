@@ -1,23 +1,24 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTabsModule } from '@angular/material/tabs';
+import { NgModule } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
 
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductListComponent } from './product-list/product-list.component';
 import { ProductRoutingModule } from './product-routing.module';
 import { ProductComponent } from './product.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
-import { NgApexchartsModule } from 'ng-apexcharts';
 
-import { TableModule } from 'primeng/table';
+import { FormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
 @NgModule({
   declarations: [
     ProductComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    ProductCatalogComponent
+    ProductCatalogComponent,
   ],
   imports: [
     CommonModule,
@@ -26,10 +27,9 @@ import { InputTextModule } from 'primeng/inputtext';
     MatDialogModule,
     TableModule,
     InputTextModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    FormsModule,
   ],
-  exports: [
-    ProductComponent
-  ]
+  exports: [ProductComponent],
 })
-export class ProductModule { }
+export class ProductModule {}
