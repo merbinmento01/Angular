@@ -5,9 +5,11 @@
     <div class="body">
         <div class="details">
             <form [formGroup]="createProductForm">
-            <div class="fields" *ngFor="let col of columnList">
-                <label>{{col?.header}}</label>
-                <input type="text" [formControlName]="col.field">
+            <div *ngFor="let col of columnList">
+                <div class="fields" *ngIf="!col?.parentField">
+                    <label>{{col?.header}}</label>
+                    <input type="text" [formControlName]="col.field">
+                </div>
             </div>
         </form>
             <label>Lead Engineer</label>

@@ -87,8 +87,8 @@ export class ProductListComponent implements OnInit {
     componentRef.componentInstance.productListCount = this.productData?.length;
     componentRef.afterClosed().subscribe((res: any) => {
       if (res?.Product_ID) {
-        this.productData.push(res);
-        this.productData = [...this.productData];
+        this.filteredData.push(res);
+        this.filteredData = [...this.filteredData];
       }
     });
   }
