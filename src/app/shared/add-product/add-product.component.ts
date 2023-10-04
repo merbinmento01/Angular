@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -22,6 +22,7 @@ export class AddProductComponent implements OnInit {
   createProductForm: FormGroup = new FormGroup({});
   leadEngineerData: any;
   techSupportData: any;
+  invalid: boolean = false;
 
   constructor(
     private modalRef: MatDialogRef<AddProductComponent>,
@@ -108,6 +109,7 @@ export class AddProductComponent implements OnInit {
   }
 
   onSubmit() {
+    if(this.createProductForm?.value?.Product_Name) {
     let payload = {
       Product_ID: this.productListCount + 1,
       Product_Name: this.createProductForm?.value.Product_Name,
@@ -148,7 +150,10 @@ export class AddProductComponent implements OnInit {
       techSupport: this.techSupportData,
     };
 
-    this.modalRef.close(payload)
+    this.modalRef.close(payload);
+  } else  {
+    this.invalid = true
+  }
   }
 
   closeDialog() {

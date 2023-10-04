@@ -14,8 +14,8 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   salesChartOptions: any;
   salesChart: any;
   salesChartData: any[] = [];
-  catalogImages: any[] = ['img1', 'img2', 'img3', 'img4'];
   productRating: number = 0;
+  selectedTab: string = '';
 
   constructor(private modal: MatDialog) {}
 
@@ -25,6 +25,8 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     this.formatChartData();
     if(this.salesChart) {
       this.salesChart.updateSeries(this.salesChartData)
+    } else if (this.selectedTab == 'Sales And Opportunities' && this.selectedProduct?.salesAndOpportunities) {
+      this.initializeChart();
     }
   }
 
@@ -44,8 +46,11 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   }
 
   onChange(event: any) {
-    if (event?.tab?.textLabel == 'Sales And Opportunities' && this.selectedProduct?.salesAndOpportunities) {
+    this.selectedTab = event?.tab?.textLabel;
+    if (this.selectedTab == 'Sales And Opportunities' && this.selectedProduct?.salesAndOpportunities) {
       this.initializeChart();
+    } else if (!this.selectedProduct?.salesAndOpportunities) {
+      this.salesChart.destroy();
     }
   }
 

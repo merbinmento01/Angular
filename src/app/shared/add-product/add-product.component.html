@@ -1,48 +1,76 @@
 <div class="new-product">
-    <div class="header">
-        <h1>Create New Product</h1>
-    </div>
-    <div class="body">
-        <div class="details">
-            <form [formGroup]="createProductForm">
-            <div *ngFor="let col of columnList">
-                <div class="fields" *ngIf="!col?.parentField">
-                    <label>{{col?.header}}</label>
-                    <input type="text" [formControlName]="col.field">
-                </div>
-            </div>
-        </form>
-            <label>Lead Engineer</label>
-        <select (change)="onLeadEngineerChange($event)">
-            <option *ngFor="let leadEngineer of leadEngineersList" [value]="leadEngineer?.Employee_ID">{{leadEngineer?.Employee_Full_Name}}</option>
-        </select>
-        <label>Tech Support</label>
-        <select (change)="onTechSupportChange($event)">
-            <option *ngFor="let techSupport of techSupportList" [value]="techSupport?.Employee_ID">{{techSupport?.Employee_Full_Name}}</option>
-        </select>
+  <div class="header">
+    <h1>Create New Product</h1>
+  </div>
+  <div class="body">
+    <div class="details">
+      <form [formGroup]="createProductForm">
+        <div *ngFor="let col of columnList">
+          <div class="fields" *ngIf="!col?.parentField">
+            <label>{{ col?.header }}<span *ngIf="col?.required">*</span></label>
+            <input type="text" [formControlName]="col.field" />
+          </div>
+        </div>
+      </form>
+      <label>Lead Engineer</label>
+      <select (change)="onLeadEngineerChange($event)">
+        <option
+          *ngFor="let leadEngineer of leadEngineersList"
+          [value]="leadEngineer?.Employee_ID"
+        >
+          {{ leadEngineer?.Employee_Full_Name }}
+        </option>
+      </select>
+      <label>Tech Support</label>
+      <select (change)="onTechSupportChange($event)">
+        <option
+          *ngFor="let techSupport of techSupportList"
+          [value]="techSupport?.Employee_ID"
+        >
+          {{ techSupport?.Employee_Full_Name }}
+        </option>
+      </select>
+      <div class="invalid" *ngIf="invalid">
+        <i class="bi bi-info-circle-fill"></i>
+        <span>Please enter all the required fields...</span>
+      </div>
     </div>
     <div class="image-upload">
-        <div class="primary-img">
-            <div class="primary-img-wrapper">
-                <img [src]="primaryImage" alt="">
-            </div>
-            <button class="primary" (click)="openFileDialog()">Upload Primary Picture</button>
-            <input type="file" #fileInput class="file" (change)="uploadFiles($event, 'primary')"/>
+      <div class="primary-img">
+        <div class="primary-img-wrapper">
+          <img [src]="primaryImage" alt="" />
         </div>
-        <div class="catalog-img">
-            <div class="catalog-img-wrapper">
-                <div class="cat-img" *ngFor="let catImg of catalogImages">
-                    <img [src]="catImg" alt="">
-                </div>
-            </div>
-            <button class="primary" (click)="openCatalogFileDialog()">Upload Catalog Picture</button>
-            <input type="file" #catalogfileInput class="file" (change)="uploadFiles($event, 'catalog')" multiple/>
+        <button class="primary" (click)="openFileDialog()">
+          Upload Primary Picture
+        </button>
+        <input
+          type="file"
+          #fileInput
+          class="file"
+          (change)="uploadFiles($event, 'primary')"
+        />
+      </div>
+      <div class="catalog-img">
+        <div class="catalog-img-wrapper">
+          <div class="cat-img" *ngFor="let catImg of catalogImages">
+            <img [src]="catImg" alt="" />
+          </div>
         </div>
-
+        <button class="primary" (click)="openCatalogFileDialog()">
+          Upload Catalog Picture
+        </button>
+        <input
+          type="file"
+          #catalogfileInput
+          class="file"
+          (change)="uploadFiles($event, 'catalog')"
+          multiple
+        />
+      </div>
     </div>
-    </div>
-    <div class="footer">
-        <button class="submit" (click)="onSubmit()">Submit</button>
-        <button (click)="closeDialog()">Cancel</button>
-    </div>
+  </div>
+  <div class="footer">
+    <button class="submit" (click)="onSubmit()">Submit</button>
+    <button (click)="closeDialog()">Cancel</button>
+  </div>
 </div>

@@ -39,8 +39,8 @@ export class ProductListComponent implements OnInit {
   }
 
   updateColumns(columns: any) {
-    this.activeColumns = columns.filter((col: any) => col.isActive);
-    this.inActiveColumns = columns.filter((col: any) => !col.isActive);
+    this.activeColumns = [...columns.filter((col: any) => col.isActive)];
+    this.inActiveColumns = [...columns.filter((col: any) => !col.isActive)];
   }
 
   filterData() {
@@ -102,9 +102,10 @@ export class ProductListComponent implements OnInit {
     });
     modelRef.componentInstance.emitFileChange.subscribe((res: any) => {
       if(this.selectedProduct){
-        let index = this.productData.findIndex(ele => ele.Product_ID == this.selectedProduct.Product_ID);
+        let index = this.filteredData.findIndex(ele => ele.Product_ID == this.selectedProduct.Product_ID);
         if(index !== -1){
-          this.productData.splice(index, 1)
+          this.filteredData.splice(index, 1);
+          this.filteredData = [...this.filteredData];
         }
       }
     })

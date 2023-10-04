@@ -22,11 +22,24 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-      padding-right: 25px;
+        padding-right: 25px;
 
-      .fields {
-        display: grid;
-      }
+        .invalid {
+          margin-top: 10px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          padding: 0px 10px;
+          gap: 10px;
+          border: 1px solid red;
+          border-radius: 10px;
+          color: red;
+          background-color: #ff000012;
+        }
+
+        .fields {
+          display: grid;
+        }
 
         input[type="text"]:focus,
         select:focus {

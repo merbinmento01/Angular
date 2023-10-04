@@ -9,7 +9,7 @@
     </div>
     <div class="section-2">
         <div class="prod-img">
-            <img [src]="'data:image/jpeg;base64,'+selectedProduct?.product?.Product_Primary_Image" alt="">
+            <img *ngIf="selectedProduct?.product.Product_Primary_Image" [src]="'data:image/jpeg;base64,'+selectedProduct?.product?.Product_Primary_Image" alt="">
         </div>
         <div class="emp-details">
             <div class="emp">
@@ -30,16 +30,16 @@
                 <i class="bi bi-chevron-compact-left"></i>
                 <div class="catalog">
                     <div class="cat-img">
-                        <img [src]="'data:image/jpeg;base64,'+selectedProduct?.catalog.Product_Image1" alt="">
+                        <img *ngIf="selectedProduct?.catalog.Product_Image1" [src]="'data:image/jpeg;base64,'+selectedProduct?.catalog.Product_Image1" alt="">
                     </div>
                     <div class="cat-img">
-                        <img [src]="'data:image/jpeg;base64,'+selectedProduct?.catalog.Product_Image2" alt="">
+                        <img *ngIf="selectedProduct?.catalog.Product_Image2" [src]="'data:image/jpeg;base64,'+selectedProduct?.catalog.Product_Image2" alt="">
                     </div>
                     <div class="cat-img">
-                        <img [src]="'data:image/jpeg;base64,'+selectedProduct?.catalog.Product_Image3" alt="">
+                        <img *ngIf="selectedProduct?.catalog.Product_Image3" [src]="'data:image/jpeg;base64,'+selectedProduct?.catalog.Product_Image3" alt="">
                     </div>
                     <div class="cat-img">
-                        <img [src]="'data:image/jpeg;base64,'+selectedProduct?.catalog.Product_Image4" alt="">
+                        <img *ngIf="selectedProduct?.catalog.Product_Image4" [src]="'data:image/jpeg;base64,'+selectedProduct?.catalog.Product_Image4" alt="">
                     </div>
                 </div>
                 <i class="bi bi-chevron-compact-right"></i>
