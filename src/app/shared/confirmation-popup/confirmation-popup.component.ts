@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -8,10 +8,16 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class ConfirmationPopupComponent {
 
+  @Output() emitFileChange = new EventEmitter();
   
   constructor(private modalRef: MatDialogRef<ConfirmationPopupComponent>) {}
 
-  closeDialog() {
-    this.modalRef.close()
+  closeDialog(type?: any) {
+    if(type == 'yes'){
+      this.emitFileChange.emit();
+      this.modalRef.close();
+    }else{
+      this.modalRef.close();
+    }
   }
 }

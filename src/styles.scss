@@ -21,6 +21,10 @@ input:-webkit-autofill {
 html,
 body {
   height: 100%;
+  overflow: hidden;
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
 body {
   margin: 0;
@@ -3552,6 +3556,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
 }
 .p-column-filter-overlay-menu .p-column-filter-buttonbar {
   padding: 1.25rem;
+  gap:5px
 }
 
 .fc {

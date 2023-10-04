@@ -94,12 +94,20 @@ export class ProductListComponent implements OnInit {
   }
 
   confirmationProduct() {
-    this.modal.open(ConfirmationPopupComponent, {
+    const modelRef = this.modal.open(ConfirmationPopupComponent, {
       minWidth: '30vw',
       width: '20vw',
       height: '10vw',
       panelClass: 'confirmation-product',
     });
+    modelRef.componentInstance.emitFileChange.subscribe((res: any) => {
+      if(this.selectedProduct){
+        let index = this.productData.findIndex(ele => ele.Product_ID == this.selectedProduct.Product_ID);
+        if(index !== -1){
+          this.productData.splice(index, 1)
+        }
+      }
+    })
   }
 
   openDynamicColPopup() {
