@@ -44,7 +44,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
   }
 
   onChange(event: any) {
-    if (event?.tab?.textLabel == 'Sales And Opportunities') {
+    if (event?.tab?.textLabel == 'Sales And Opportunities' && this.selectedProduct?.salesAndOpportunities) {
       this.initializeChart();
     }
   }
@@ -53,7 +53,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     this.salesChartData = [];
     const sales: any = { name: 'Sales', data: [] };
     const opportunities: any = { name: 'Opportunities', data: [] };
-    this.selectedProduct?.salesAndOpportunities.forEach((salesAndOpp: any) => {
+    this.selectedProduct?.salesAndOpportunities?.forEach((salesAndOpp: any) => {
       sales.data.push({x: salesAndOpp?.Year, y: salesAndOpp?.Sale})
       opportunities.data.push({x: salesAndOpp?.Year, y: salesAndOpp?.Opportunity})
     });

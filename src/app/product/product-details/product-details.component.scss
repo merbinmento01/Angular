@@ -134,10 +134,11 @@
             
             .cat-img {
                 height: 120px;
-                width: 160px;
+                width: 180px;
                 border: 2px solid #c1c1c1;
                 display: flex;
                 justify-content: center ;
+                overflow: hidden;
             }
         }
       }

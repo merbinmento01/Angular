@@ -5,6 +5,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { CustomFilterPopupComponent } from './custom-filter-popup/custom-filter-popup.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 import { ImagePreviewComponent } from './image-preview/image-preview.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { ImagePreviewComponent } from './image-preview/image-preview.component';
     ImagePreviewComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

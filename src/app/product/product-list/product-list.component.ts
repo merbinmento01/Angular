@@ -67,13 +67,21 @@ export class ProductListComponent implements OnInit {
   }
 
   openAddNewProduct() {
-    this.modal.open(AddProductComponent, {
-      minWidth: '30vw',
-      width: '80vw',
-      height: '45vw',
+    const componentRef = this.modal.open(AddProductComponent, {
+      width: '60vw',
+      height: '33vw',
       panelClass: 'add-product',
     });
+    componentRef.componentInstance.columnList = this.cols;
+    componentRef.componentInstance.productListCount = this.productData?.length;
+    componentRef.afterClosed().subscribe((res: any) => {
+      if (res?.Product_ID) {
+        this.productData.push(res);
+        this.productData = [...this.productData];
+      }
+    });
   }
+
   confirmationProduct() {
     this.modal.open(ConfirmationPopupComponent, {
       minWidth: '30vw',
