@@ -48,7 +48,7 @@
   }
 
   .body {
-    height: calc(60vh - 50px);
+    height: fit-content;
     margin: 10px;
     background-color: white;
     margin-top: unset;
@@ -109,7 +109,7 @@
     .p-datatable-wrapper {
       padding: 10px;
       height:430px;
-    }
+          }
     button.p-ripple.p-element.p-paginator-first.p-paginator-element.p-link.p-disabled {
       display: none;
     }
