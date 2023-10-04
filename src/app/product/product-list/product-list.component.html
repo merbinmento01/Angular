@@ -6,7 +6,9 @@
       <button class="export" (click)="exportexcel()">Export</button>
     </div>
     <div class="header-btn-group">
-      <button class="addColumns" (click)="openDynamicColPopup()">Add Coulumns</button>
+      <button class="addColumns" (click)="openDynamicColPopup()">
+        Add Columns
+      </button>
     </div>
     <div class="header-btn-group header-search">
       <div class="search">
@@ -45,8 +47,13 @@
       </ng-template>
       <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr [pSelectableRow]="rowData">
-          <td *ngFor="let col of cols ">
-            {{ rowData[col.field] }}
+          <td *ngFor="let col of activeColumns">
+            <ng-container *ngIf="!col?.parentField; else subFieldData">{{
+              rowData[col.field]
+            }}</ng-container>
+            <ng-template #subFieldData>{{
+              rowData[col.parentField][col.field]
+            }}</ng-template>
           </td>
         </tr>
       </ng-template>
@@ -59,7 +66,7 @@
   </div>
 </div>
 
-<div style=" display: none; margin: auto; width: 50%;"> 
+<div style="display: none; margin: auto; width: 50%">
   <table id="excel-table">
     <tr>
       <th>Id</th>
@@ -74,16 +81,16 @@
       <th>tech Support</th>
     </tr>
     <tr *ngFor="let item of productData">
-      <td>{{item?.Product_ID}}</td>
-      <td>{{item?.Product_Name}}</td>
-      <td>{{item?.Product_Cost}}</td>
-      <td>{{item?.Product_Sale_Price}}</td>
-      <td>{{item?.Product_Retail_Price}}</td>
-      <td>{{item?.Product_Current_Inventory}}</td>
-      <td>{{item?.Product_Manufacturing}}</td>
-      <td>{{item?.Product_Backorder}}</td>
-      <td>{{item?.leadEngineer?.Employee_Full_Name}}</td>
-      <td>{{item?.techSupport?.Employee_Full_Name}}</td>
+      <td>{{ item?.Product_ID }}</td>
+      <td>{{ item?.Product_Name }}</td>
+      <td>{{ item?.Product_Cost }}</td>
+      <td>{{ item?.Product_Sale_Price }}</td>
+      <td>{{ item?.Product_Retail_Price }}</td>
+      <td>{{ item?.Product_Current_Inventory }}</td>
+      <td>{{ item?.Product_Manufacturing }}</td>
+      <td>{{ item?.Product_Backorder }}</td>
+      <td>{{ item?.leadEngineer?.Employee_Full_Name }}</td>
+      <td>{{ item?.techSupport?.Employee_Full_Name }}</td>
     </tr>
   </table>
 </div>
@@ -95,7 +102,12 @@
       <div class="activeList">
         <span class="box-header">Active Columns</span>
         <div class="dataset">
-          <span *ngFor="let cols of activeColumns" [ngClass]="cols?.header == selectedColumn ? 'active' : ''" (click)="onSelection(cols?.header)">{{cols?.header}}</span>
+          <span
+            *ngFor="let cols of activeColumns"
+            [ngClass]="cols?.header == selectedColumn ? 'active' : ''"
+            (click)="onSelection(cols?.header)"
+            >{{ cols?.header }}</span
+          >
         </div>
       </div>
       <div class="buttons">
@@ -105,13 +117,17 @@
       <div class="inActiveList">
         <span class="box-header">InActive Columns</span>
         <div class="dataset">
-          <span *ngFor="let cols of inActiveColumns" [ngClass]="cols?.header == selectedColumn ? 'active' : ''" (click)="onSelection(cols?.header)">{{cols?.header}}</span>
+          <span
+            *ngFor="let cols of inActiveColumns"
+            [ngClass]="cols?.header == selectedColumn ? 'active' : ''"
+            (click)="onSelection(cols?.header)"
+            >{{ cols?.header }}</span
+          >
         </div>
       </div>
     </div>
     <div class="footer">
-      <button class="save">Save</button>
-      <button class="cancel" (click)="closeDialog()">Cancel</button>
+      <button class="cancel" (click)="closeDialog()">Close</button>
     </div>
   </div>
 </ng-template>
