@@ -4,6 +4,7 @@ import { DataService } from 'src/app/services/data.service';
 import { AddProductComponent } from 'src/app/shared/add-product/add-product.component';
 import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
 import { CustomFilterPopupComponent } from 'src/app/shared/custom-filter-popup/custom-filter-popup.component';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-product-list',
@@ -29,7 +30,7 @@ export class ProductListComponent implements OnInit {
     this.getProductsData();
     this.filteredData = this.productData;
   }
-  
+
   getColumnData() {
     this.dataService.getColsData().subscribe((res: any) => {
       this.cols = res?.cols;
@@ -79,7 +80,7 @@ export class ProductListComponent implements OnInit {
   openAddNewProduct() {
     const componentRef = this.modal.open(AddProductComponent, {
       width: '60vw',
-      height: '33vw',
+      height: '34vw',
       panelClass: 'add-product',
     });
     componentRef.componentInstance.columnList = this.cols;
@@ -105,7 +106,7 @@ export class ProductListComponent implements OnInit {
     this.modal.open(this.dynamicColTemplate, {
       minWidth: '30vw',
       width: '40vw',
-      height: '40vw',
+      height: '39vw',
       panelClass: 'dynamicCol'
     })
   }
@@ -132,4 +133,19 @@ export class ProductListComponent implements OnInit {
     this.modal.closeAll();
   }
 
+
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('excel-table');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
+ 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+ 
+    /* save to file */  
+    XLSX.writeFile(wb, 'Product.xlsx');
+ 
+  }
 }
