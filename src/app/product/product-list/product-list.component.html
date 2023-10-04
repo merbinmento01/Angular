@@ -3,46 +3,58 @@
     <div class="header-btn-group">
       <button class="add" (click)="openAddNewProduct()">New</button>
       <button class="delete" (click)="confirmationProduct()">Delete</button>
-    </div>
-    <div class="header-btn-group">
       <button class="export">Export</button>
     </div>
     <div class="header-btn-group">
-      <button class="filter" (click)="openCustomFIlter()"><i class="bi bi-funnel-fill"></i></button>
       <button class="addColumns">Add Coulumns</button>
     </div>
     <div class="header-btn-group header-search">
       <div class="search">
-        <input type="text" />
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="filterText"
+          (input)="filterData()"
+        />
         <i class="bi bi-search"></i>
       </div>
     </div>
   </div>
   <div class="body">
-    <p-table [value]="productData" [columns]="cols"  
-    [paginator]="true" 
-    [showCurrentPageReport]="true"
-    [globalFilterFields]="['col.field']"
-    currentPageReportTemplate="page {first} of {last} of ({totalRecords} entries)"
-    [rows]="10" (selectionChange)="onRowSelect($event)"
-    selectionMode="single" [(selection)]="selectedProduct"
+    <p-table
+      [value]="filteredData"
+      [columns]="cols"
+      [paginator]="true"
+      [showCurrentPageReport]="true"
+      currentPageReportTemplate="page {first} of {last} of ({totalRecords} entries)"
+      [rows]="10"
+      (selectionChange)="onRowSelect($event)"
+      selectionMode="single"
+      [(selection)]="selectedProduct"
     >
       <ng-template pTemplate="header" let-columns>
         <tr>
-            <th class="tablehead" *ngFor="let col of columns">
-              {{ col.header }}
-              <p-columnFilter  field="col.field" display="menu"></p-columnFilter>
-            </th>
+          <th [pSortableColumn]="col.field" *ngFor="let col of columns">
+            <span class="tablehead"
+              >{{ col.header }}
+              <p-sortIcon [field]="col.field"></p-sortIcon>
+            </span>
+            <p-columnFilter [field]="col.field" display="menu"></p-columnFilter>
+          </th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-rowData let-columns="columns">
-        <tr [pSelectableRow]="rowData" >
-          <td *ngFor="let col of columns">
+        <tr [pSelectableRow]="rowData">
+          <td *ngFor="let col of cols">
             {{ rowData[col.field] }}
           </td>
         </tr>
       </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="7">No customers found.</td>
+        </tr>
+      </ng-template>
     </p-table>
-    
   </div>
 </div>

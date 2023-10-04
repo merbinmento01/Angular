@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { AddProductComponent } from 'src/app/shared/add-product/add-product.component';
@@ -8,18 +8,17 @@ import { CustomFilterPopupComponent } from 'src/app/shared/custom-filter-popup/c
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
-
   @Output() onProductChange = new EventEmitter();
   productData: any[] = [];
   cols: any[] = [];
-  
-  selectedProduct: any ;
-
+  selectedProduct: any;
+  filterText: any;
+  filteredData: any[] = [];
   constructor(private modal: MatDialog, private dataService: DataService) {}
- 
+
   ngOnInit(): void {
     this.cols = [
       { field: 'Product_Name', header: 'Product Name' },
@@ -28,20 +27,25 @@ export class ProductListComponent implements OnInit {
       { field: 'Product_Retail_Price', header: 'Retail Price' },
       { field: 'Product_Current_Inventory', header: 'Inventory' },
       { field: 'Product_Manufacturing', header: 'Manufacturing' },
-      { field: 'Product_Backorder', header: 'Backorder' }
-  ];
+      { field: 'Product_Backorder', header: 'Backorder' },
+    ];
     this.getProductsData();
+    this.filteredData = this.productData;
   }
- 
-
- 
+  filterData() {
+    this.filteredData = this.productData.filter((item) => {
+      return item.Product_Name.toLowerCase().includes(
+        this.filterText.toLowerCase()
+      );
+    });
+  }
   getProductsData() {
     this.dataService.getProductData().subscribe((res) => {
       this.productData = res.ProductData;
       this.selectedProduct = this.productData[0];
       this.onRowSelect(this.selectedProduct);
       console.log('productData', this.productData);
-    })
+    });
   }
 
   onRowSelect(event: any) {
@@ -58,8 +62,8 @@ export class ProductListComponent implements OnInit {
       minWidth: '30vw',
       width: '80vw',
       height: '45vw',
-      panelClass: 'custom-filter'
-    })
+      panelClass: 'custom-filter',
+    });
   }
 
   openAddNewProduct() {
@@ -67,16 +71,15 @@ export class ProductListComponent implements OnInit {
       minWidth: '30vw',
       width: '80vw',
       height: '45vw',
-      panelClass: 'add-product'
-    })
+      panelClass: 'add-product',
+    });
   }
-  confirmationProduct(){
+  confirmationProduct() {
     this.modal.open(ConfirmationPopupComponent, {
       minWidth: '30vw',
       width: '20vw',
       height: '10vw',
-      panelClass: 'confirmation-product'
-    })
+      panelClass: 'confirmation-product',
+    });
   }
-
 }

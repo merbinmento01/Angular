@@ -1,151 +1,156 @@
 .product-list {
-    .header {
-        display: grid;
-        grid-template-columns: 10% 25% 50% 15%;
-        height: 50px;
-        padding: 10px;
+  .header {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    height: 50px;
+    padding: 10px;
 
-        .header-btn-group {
-            display: flex;
-            gap: 10px;
+    .header-btn-group {
+      display: flex;
+      gap: 10px;
 
-            button {
-                background-color: #f6f6f6;
-                border: 1px solid #878787;
-                padding: 5px 25px;
-                border-radius: 4px;
-            }
-        }
-
-        .header-search {
-            justify-content: end;
-
-            .search {
-                background-color: #ffffff;
-                border-radius: 4px;
-                width: 210px;
-                border: 1px solid #c1c1c1;
-                display: flex;
-                align-items: center;
-
-                input {
-                    border: unset;
-                    height: 25px;
-                }
-
-                input:focus-visible {
-                    outline: none;
-                  }
-
-                  i {
-                    margin: 0px 10px;
-                    color: #c1c1c1;
-                  }
-            }
-        }
+      button {
+        background-color: #f6f6f6;
+        border: 1px solid #878787;
+        padding: 5px 25px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
     }
- 
-    .body {
-        height: calc(60vh - 50px);
-        margin: 10px;
-        background-color: white;
-        margin-top: unset;
-        overflow: auto;
-       
-       
-    }
-    .tablehead{
-        // display: flex;
-        // justify-content: space-between;
-        font-weight: 400;
-       }
-    ::ng-deep{
-        
-        .p-column-filter-menu-button, .p-column-filter-clear-button {
-            background-color: white;
-            border: none;
-        }
-        .p-column-filter-overlay.p-component.p-fluid.p-column-filter-overlay-menu {
-            background-color: white;
-            border: 1px solid #c1c1c1;
-        }
-        table#pn_id_1-table {
-            border: 1px solid #c1c1c1;
-        }
-        th {
-            border-bottom: 1px solid #c1c1c1;
-            border-right: 1px solid #c1c1c1;
-            padding: 7px;
-            color: #9b9b9b;
-           
-        }
-        .p-column-filter-overlay {
-            background-color: #ffffff;
-            height: 130px;
-            border: 1px solid #c1c1c1;
-        }
-        td {
-            border-right: 1px solid #c1c1c1;
-            padding-top: 10px;
-            padding-left: 5px;
-            font-weight: 500;
-        }
-        
-        button.p-ripple.p-element.p-paginator-prev.p-paginator-element.p-link.p-disabled {
-            border: none;
-            width: 25px;
-            color: black;
-        }
-        button.p-ripple.p-element.p-paginator-next.p-paginator-element.p-link {
-            border: none;
-            width: 25px;
-            color: black;
-            background: white;
-        }
-        .p-datatable-wrapper{
-            padding: 10px;
-        }
-        button.p-ripple.p-element.p-paginator-first.p-paginator-element.p-link.p-disabled {
-            display: none;
-        }
-        button.p-ripple.p-element.p-paginator-last.p-paginator-element.p-link.p-disabled {
-            display: none;
-        }
-        button.p-ripple.p-element.p-paginator-last.p-paginator-element.p-link {
-            display: none;
-        }
-        button.p-ripple.p-element.p-paginator-first.p-paginator-element.p-link {
-            display: none;
-        }
-        tr.p-element.p-selectable-row.p-highlight{
-            background-color: #b2566b;
-            color: #ffffff;
+
+    .header-search {
+      justify-content: end;
+
+      .search {
+        background-color: #ffffff;
+        border-radius: 4px;
+        width: 240px;
+        border: 1px solid #c1c1c1;
+        display: flex;
+        align-items: center;
+
+        input {
+          border: unset;
+          height: 25px;
+          padding: 10px;
         }
 
-        .p-paginator.p-component {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px;
+        input:focus-visible {
+          outline: none;
         }
 
-        button.p-ripple.p-element.p-paginator-page.p-paginator-element.p-link.p-highlight {
-            background-color: #b2566b;
-            color: #ffffff;
-            width: 25px;
-            height: 25px;
-            border: #b2566b;
-            border-radius: 4px;
+        i {
+          margin: 0px 10px;
+          color: #c1c1c1;
         }
-        button.p-ripple.p-element.p-paginator-page.p-paginator-element.p-link {
-            background-color: #ffffff;
-            width: 25px;
-            height: 25px;
-            border: #ffffff;
-            border-radius: 4px;
-        }
-        button.p-ripple.p-element.p-paginator-prev.p-paginator-element.p-link {
-            border: none;
-            background: white;
-        }
+      }
     }
+  }
+
+  .body {
+    height: calc(60vh - 50px);
+    margin: 10px;
+    background-color: white;
+    margin-top: unset;
+    overflow: auto;
+    .tablehead {
+      float: left;
+    }
+  }
+
+  ::ng-deep {
+    .p-column-filter-operator-dropdown.p-dropdown.p-component {
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid #dee2e6;
+      color: #343a40;
+      background: #f8f9fa;
+      margin: 0;
+      border-top-right-radius: 6px;
+      border-top-left-radius: 6px;
+    }
+    .p-column-filter-menu-button,
+    .p-column-filter-clear-button {
+      background-color: white;
+      border: none;
+    }
+    p-columnfilter.p-element {
+      float: right;
+    }
+    table#pn_id_1-table {
+      border: 1px solid #c1c1c1;
+      height: 375px;
+    }
+    th {
+      border-bottom: 1px solid #c1c1c1;
+      border-right: 1px solid #c1c1c1;
+      padding: 7px;
+      color: #9b9b9b;
+      font-weight: 400;
+    }
+
+    td {
+      border-right: 1px solid #c1c1c1;
+      padding-top: 10px;
+      padding-left: 5px;
+      font-weight: 500;
+    }
+
+    button.p-ripple.p-element.p-paginator-prev.p-paginator-element.p-link.p-disabled {
+      border: none;
+      width: 25px;
+      color: black;
+    }
+    button.p-ripple.p-element.p-paginator-next.p-paginator-element.p-link {
+      border: none;
+      width: 25px;
+      color: black;
+      background: white;
+    }
+    .p-datatable-wrapper {
+      padding: 10px;
+    }
+    button.p-ripple.p-element.p-paginator-first.p-paginator-element.p-link.p-disabled {
+      display: none;
+    }
+    button.p-ripple.p-element.p-paginator-last.p-paginator-element.p-link.p-disabled {
+      display: none;
+    }
+    button.p-ripple.p-element.p-paginator-last.p-paginator-element.p-link {
+      display: none;
+    }
+    button.p-ripple.p-element.p-paginator-first.p-paginator-element.p-link {
+      display: none;
+    }
+
+    tr.p-element.p-selectable-row.p-highlight {
+      background-color: #b2566b;
+      color: #ffffff;
+    }
+
+    .p-paginator.p-component {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px;
+    }
+
+    button.p-ripple.p-element.p-paginator-page.p-paginator-element.p-link.p-highlight {
+      background-color: #b2566b;
+      color: #ffffff;
+      width: 25px;
+      height: 25px;
+      border: #b2566b;
+      border-radius: 4px;
+    }
+    button.p-ripple.p-element.p-paginator-page.p-paginator-element.p-link {
+      background-color: #ffffff;
+      width: 25px;
+      height: 25px;
+      border: #ffffff;
+      border-radius: 4px;
+    }
+    button.p-ripple.p-element.p-paginator-prev.p-paginator-element.p-link {
+      border: none;
+      background: white;
+    }
+  }
 }
