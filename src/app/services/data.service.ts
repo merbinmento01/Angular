@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import * as ProductData from '../common-helper/product.json';
+import * as colsData from '../common-helper/col-details.json';
 import { Observable, of } from "rxjs";
 
 @Injectable ({
@@ -12,6 +13,9 @@ export class DataService {
         return of(ProductData);
     } 
 
+    getColsData() :Observable<any> {
+        return of(colsData);
+    } 
     
     getLeadEngineerList() :Observable<any> {
         const productData = JSON.parse(JSON.stringify(ProductData));
@@ -28,8 +32,8 @@ export class DataService {
         const productData = JSON.parse(JSON.stringify(ProductData));
         const techSupportList: any[] = [];
         productData?.ProductData.forEach((product: any) => {
-            if(techSupportList.findIndex(tech => tech?.Employee_ID === product?.leadEngineer?.Employee_ID) < 0 && product?.leadEngineer) {
-                techSupportList.push(product?.leadEngineer);
+            if(techSupportList.findIndex(tech => tech?.Employee_ID === product?.techSupport?.Employee_ID) < 0 && product?.techSupport?.Employee_ID) {
+                techSupportList.push(product?.techSupport);
             }
         })
         return of(techSupportList);

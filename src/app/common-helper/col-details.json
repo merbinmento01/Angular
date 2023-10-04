@@ -1,0 +1,32 @@
+{
+    "cols": [
+        {
+          "field": "Product_Name",
+          "header": "Product Name"
+        },
+        {
+          "field": "Product_Cost",
+          "header": "Cost"
+        },
+        {
+          "field": "Product_Sale_Price",
+          "header": "Sale Price"
+        },
+        {
+          "field": "Product_Retail_Price",
+          "header": "Retail Price"
+        },
+        {
+          "field": "Product_Current_Inventory",
+          "header": "Inventory"
+        },
+        {
+          "field": "Product_Manufacturing",
+          "header": "Manufacturing"
+        },
+        {
+          "field": "Product_Backorder",
+          "header": "Backorder"
+        }
+      ]
+}
