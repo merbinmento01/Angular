@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, Output, EventEmitter, ViewChild, TemplateRef } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DataService } from 'src/app/services/data.service';
 import { AddProductComponent } from 'src/app/shared/add-product/add-product.component';
 import { ConfirmationPopupComponent } from 'src/app/shared/confirmation-popup/confirmation-popup.component';
@@ -11,27 +11,37 @@ import { CustomFilterPopupComponent } from 'src/app/shared/custom-filter-popup/c
   styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit {
+
+  @ViewChild('dynamicColumn', { static: false }) dynamicColTemplate!: TemplateRef<any>;
   @Output() onProductChange = new EventEmitter();
   productData: any[] = [];
   cols: any[] = [];
+  activeColumns: any[] = [];
+  inActiveColumns: any[] = [];
+  selectedColumn: string = '';
   selectedProduct: any;
   filterText: any;
   filteredData: any[] = [];
   constructor(private modal: MatDialog, private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.cols = [
-      { field: 'Product_Name', header: 'Product Name' },
-      { field: 'Product_Cost', header: 'Cost' },
-      { field: 'Product_Sale_Price', header: 'Sale Price' },
-      { field: 'Product_Retail_Price', header: 'Retail Price' },
-      { field: 'Product_Current_Inventory', header: 'Inventory' },
-      { field: 'Product_Manufacturing', header: 'Manufacturing' },
-      { field: 'Product_Backorder', header: 'Backorder' },
-    ];
+    this.getColumnData();
     this.getProductsData();
     this.filteredData = this.productData;
   }
+  
+  getColumnData() {
+    this.dataService.getColsData().subscribe((res: any) => {
+      this.cols = res?.cols;
+      this.updateColumns(this.cols);
+    })
+  }
+
+  updateColumns(columns: any) {
+    this.activeColumns = columns.filter((col: any) => col.isActive);
+    this.inActiveColumns = columns.filter((col: any) => !col.isActive);
+  }
+
   filterData() {
     this.filteredData = this.productData.filter((item) => {
       return item.Product_Name.toLowerCase().includes(
@@ -90,4 +100,36 @@ export class ProductListComponent implements OnInit {
       panelClass: 'confirmation-product',
     });
   }
+
+  openDynamicColPopup() {
+    this.modal.open(this.dynamicColTemplate, {
+      minWidth: '30vw',
+      width: '40vw',
+      height: '40vw',
+      panelClass: 'dynamicCol'
+    })
+  }
+
+  onSelection(header: string) {
+    this.selectedColumn = header;
+  }
+
+  addColumn() {
+    if(this.inActiveColumns.findIndex((cols: any) => cols?.header == this.selectedColumn) > -1) {
+      this.cols.find((cols: any) => cols?.header == this.selectedColumn).isActive = true;
+      this.updateColumns(this.cols);
+    }
+  }
+  
+  removeColumn() {
+    if(this.activeColumns.findIndex((cols: any) => cols?.header == this.selectedColumn) > -1) {
+      this.cols.find((cols: any) => cols?.header == this.selectedColumn).isActive = false;
+      this.updateColumns(this.cols);
+    }
+  }
+
+  closeDialog() {
+    this.modal.closeAll();
+  }
+
 }

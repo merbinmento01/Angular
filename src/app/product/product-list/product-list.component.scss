@@ -154,3 +154,83 @@
     }
   }
 }
+
+.dynamicColumn {
+  height: 100%;
+  padding: 30px;
+
+  .header {
+    font-size: 25px;
+    font-weight: 500;
+    color: #b2586e;
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    height: calc(100% - 80px);
+    padding: 20px 0px;
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      button {
+        height: 30px;
+        width: 80px;
+      }
+    }
+
+    .activeList,
+    .inActiveList {
+      border: 1px solid #c1c1c1;
+      border-radius: 5px;
+
+      .box-header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        height: 35px;
+        align-items: center;
+        background-color: #c1c1c1;
+      }
+
+      .dataset {
+        span {
+          display: flex;
+          justify-content: center;
+          height: 30px;
+          align-items: center;
+          border-bottom: 1px solid #c1c1c1;
+        }
+
+        .active {
+            background-color: #b2586e;
+            color: #ffffff;
+        }
+      }
+    }
+  }
+
+  .footer {
+    height: 35px;
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+
+    .save {
+      background-color: #b2586e;
+      color: #ffffff;
+    }
+
+    button {
+      background-color: #f6f6f6;
+      border: 1px solid #878787;
+      padding: 5px 25px;
+      border-radius: 4px;
+    }
+  }
+}

@@ -2,31 +2,50 @@
     "cols": [
         {
           "field": "Product_Name",
-          "header": "Product Name"
+          "header": "Product Name",
+          "isActive": true
         },
         {
           "field": "Product_Cost",
-          "header": "Cost"
+          "header": "Cost",
+          "isActive": true
         },
         {
           "field": "Product_Sale_Price",
-          "header": "Sale Price"
+          "header": "Sale Price",
+          "isActive": true
         },
         {
           "field": "Product_Retail_Price",
-          "header": "Retail Price"
+          "header": "Retail Price",
+          "isActive": true
         },
         {
           "field": "Product_Current_Inventory",
-          "header": "Inventory"
+          "header": "Inventory",
+          "isActive": true
         },
         {
           "field": "Product_Manufacturing",
-          "header": "Manufacturing"
+          "header": "Manufacturing",
+          "isActive": true
         },
         {
           "field": "Product_Backorder",
-          "header": "Backorder"
+          "header": "Backorder",
+          "isActive": true
+        },
+        {
+          "field": "Employee_Full_Name",
+          "parentField": "leadEngineer",
+          "header": "Lead Engineer",
+          "isActive": false
+        },
+        {
+          "field": "Employee_Full_Name",
+          "parentField": "techSupport",
+          "header": "Tech Support",
+          "isActive": false
         }
       ]
 }

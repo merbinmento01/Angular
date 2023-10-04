@@ -6,7 +6,7 @@
       <button class="export">Export</button>
     </div>
     <div class="header-btn-group">
-      <button class="addColumns">Add Coulumns</button>
+      <button class="addColumns" (click)="openDynamicColPopup()">Add Coulumns</button>
     </div>
     <div class="header-btn-group header-search">
       <div class="search">
@@ -23,7 +23,7 @@
   <div class="body">
     <p-table
       [value]="filteredData"
-      [columns]="cols"
+      [columns]="activeColumns"
       [paginator]="true"
       [showCurrentPageReport]="true"
       currentPageReportTemplate="page {first} of {last} of ({totalRecords} entries)"
@@ -58,3 +58,31 @@
     </p-table>
   </div>
 </div>
+
+<ng-template #dynamicColumn>
+  <div class="dynamicColumn">
+    <div class="header">Add or Remove Table Columns</div>
+    <div class="body">
+      <div class="activeList">
+        <span class="box-header">Active Columns</span>
+        <div class="dataset">
+          <span *ngFor="let cols of activeColumns" [ngClass]="cols?.header == selectedColumn ? 'active' : ''" (click)="onSelection(cols?.header)">{{cols?.header}}</span>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="add" (click)="addColumn()">Add</button>
+        <button class="remove" (click)="removeColumn()">Remove</button>
+      </div>
+      <div class="inActiveList">
+        <span class="box-header">InActive Columns</span>
+        <div class="dataset">
+          <span *ngFor="let cols of inActiveColumns" [ngClass]="cols?.header == selectedColumn ? 'active' : ''" (click)="onSelection(cols?.header)">{{cols?.header}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <button class="save">Save</button>
+      <button class="cancel" (click)="closeDialog()">Cancel</button>
+    </div>
+  </div>
+</ng-template>
