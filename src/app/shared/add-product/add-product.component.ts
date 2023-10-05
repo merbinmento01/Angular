@@ -83,18 +83,6 @@ export class AddProductComponent implements OnInit {
     }
   }
 
-  onLeadEngineerChange(event: any) {
-    this.leadEngineerData = this.leadEngineersList.find(
-      (engg) => engg?.Employee_ID == event?.target.value
-    );
-  }
-
-  onTechSupportChange(event: any) {
-    this.techSupportData = this.techSupportList.find(
-      (engg) => engg?.Employee_ID == event?.target.value
-    );
-  }
-
   onSubmit() {
     if(this.createProductForm?.value?.Product_Name) {
     let payload = {

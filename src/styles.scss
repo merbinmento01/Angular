@@ -26,9 +26,18 @@ html,
 body {
   height: 100%;
   overflow: hidden;
-  &::-webkit-scrollbar{
-    display: none;
-  }
+
+}
+::-webkit-scrollbar{
+  width: 5px;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #888; 
 }
 body {
   margin: 0;
@@ -883,10 +892,11 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
 
 .p-dropdown {
   background: #ffffff;
-  border: 1px solid #ced4da;
+  border-bottom: 1px solid ;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s,
-    box-shadow 0.2s;
-  border-radius: 6px;
+  box-shadow 0.2s;
+  width: 100%;
+  height: 25px;
 }
 .p-dropdown:not(.p-disabled):hover {
   border-color: #3b82f6;
@@ -895,7 +905,7 @@ p-chips.p-chips-clearable .p-chips-clear-icon {
   outline: 0 none;
   outline-offset: 0;
   box-shadow: 0 0 0 0.2rem #bfdbfe;
-  border-color: #3b82f6;
+ 
 }
 .p-dropdown.p-dropdown-clearable .p-dropdown-label {
   padding-right: 1.75rem;

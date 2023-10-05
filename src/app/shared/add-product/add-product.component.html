@@ -13,23 +13,19 @@
         </div>
       </form>
       <label>Lead Engineer</label>
-      <select (change)="onLeadEngineerChange($event)">
-        <option
-          *ngFor="let leadEngineer of leadEngineersList"
-          [value]="leadEngineer?.Employee_ID"
-        >
-          {{ leadEngineer?.Employee_Full_Name }}
-        </option>
-      </select>
+      <p-dropdown 
+      [options]="leadEngineersList"
+      [editable]="true"
+      [(ngModel)]="leadEngineerData"
+      optionLabel="Employee_Full_Name"
+      ></p-dropdown>
       <label>Tech Support</label>
-      <select (change)="onTechSupportChange($event)">
-        <option
-          *ngFor="let techSupport of techSupportList"
-          [value]="techSupport?.Employee_ID"
-        >
-          {{ techSupport?.Employee_Full_Name }}
-        </option>
-      </select>
+      <p-dropdown 
+      [options]="techSupportList"
+      [editable]="true"
+      [(ngModel)]="techSupportData"
+      optionLabel="Employee_Full_Name"
+      ></p-dropdown>
       <div class="invalid" *ngIf="invalid">
         <i class="bi bi-info-circle-fill"></i>
         <span>Please enter all the required fields...</span>
