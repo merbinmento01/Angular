@@ -4,7 +4,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { ProductCatalogComponent } from './product-catalog/product-catalog.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductRoutingModule } from './product-routing.module';
@@ -18,7 +17,6 @@ import { TableModule } from 'primeng/table';
     ProductComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    ProductCatalogComponent,
   ],
   imports: [
     CommonModule,

@@ -1,12 +1,12 @@
 <div class="delete">
     <div class="header">
-        <i class="bi bi-x-lg" (click)="closeDialog()"></i>
+        <i class="bi bi-x-lg" (click)="closeDialog(false)"></i>
     </div>
   <div class="body">
     <label>Are you sure want to delete the selected product?</label>
   </div>
   <div class="footer">
-    <button class="submit" (click)="closeDialog('yes')">Yes</button>
-    <button (click)="closeDialog()">No</button>
+    <button class="submit" (click)="closeDialog(true)">Yes</button>
+    <button (click)="closeDialog(false)">No</button>
   </div>
 </div>

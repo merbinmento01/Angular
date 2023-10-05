@@ -55,7 +55,6 @@ export class AddProductComponent implements OnInit {
     });
 
     this.createProductForm = this.formBuilder.group(formGroup);
-    console.log(this.createProductForm);
   }
 
   openFileDialog() {
@@ -74,14 +73,12 @@ export class AddProductComponent implements OnInit {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = (event: any) => {
-          // console.log(event.target.result.split(';base64,')[1]);
           if (type === 'primary') {
             this.primaryImage = event.target.result;
           } else if (type === 'catalog') {
             this.catalogImages.push(event.target.result);
           }
         };
-        console.log('catalogImages', this.catalogImages);
       });
     }
   }
@@ -90,21 +87,11 @@ export class AddProductComponent implements OnInit {
     this.leadEngineerData = this.leadEngineersList.find(
       (engg) => engg?.Employee_ID == event?.target.value
     );
-    console.log(
-      event?.target?.value,
-      this.leadEngineerData,
-      this.leadEngineersList
-    );
   }
 
   onTechSupportChange(event: any) {
     this.techSupportData = this.techSupportList.find(
       (engg) => engg?.Employee_ID == event?.target.value
-    );
-    console.log(
-      event?.target?.value,
-      this.techSupportData,
-      this.techSupportList
     );
   }
 

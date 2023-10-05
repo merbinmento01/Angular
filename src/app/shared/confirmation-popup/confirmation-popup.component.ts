@@ -7,17 +7,10 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./confirmation-popup.component.scss']
 })
 export class ConfirmationPopupComponent {
-
-  @Output() emitFileChange = new EventEmitter();
   
   constructor(private modalRef: MatDialogRef<ConfirmationPopupComponent>) {}
 
-  closeDialog(type?: any) {
-    if(type == 'yes'){
-      this.emitFileChange.emit();
-      this.modalRef.close();
-    }else{
-      this.modalRef.close();
-    }
+  closeDialog(value: any) {
+    this.modalRef.close(value)
   }
 }

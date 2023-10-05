@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import * as ProductData from '../common-helper/product.json';
 import * as colsData from '../common-helper/col-details.json';
+import { columnListInterface } from "../common-helper/Interface";
 import { Observable, of } from "rxjs";
 
 @Injectable ({
@@ -13,7 +14,7 @@ export class DataService {
         return of(ProductData);
     } 
 
-    getColsData() :Observable<any> {
+    getColsData() :Observable<columnListInterface> {
         return of(colsData);
     } 
     

@@ -49,17 +49,17 @@
         <tr [pSelectableRow]="rowData">
           <td *ngFor="let col of activeColumns">
             <ng-container *ngIf="!col?.parentField; else subFieldData">{{
-              rowData[col.field]
+              rowData[col?.field]
             }}</ng-container>
             <ng-template #subFieldData>{{
-              rowData[col.parentField][col.field]
+              rowData[col?.parentField] &&  rowData[col?.parentField][col?.field] ? rowData[col?.parentField][col?.field] : ''
             }}</ng-template>
           </td>
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
         <tr>
-          <td colspan="7">No customers found.</td>
+          <td colspan="7">No Products found.</td>
         </tr>
       </ng-template>
     </p-table>

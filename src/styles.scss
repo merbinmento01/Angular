@@ -12,6 +12,10 @@ body {
   position: relative;
   font-family: "Montserrat", sans-serif;
   background-color: #e7e9ed;
+
+  button {
+    cursor: pointer;
+  }
 }
 
 input:-webkit-autofill {

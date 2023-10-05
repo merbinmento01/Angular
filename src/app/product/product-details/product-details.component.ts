@@ -30,9 +30,7 @@ export class ProductDetailsComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit(): void {
-    console.log('selectedProduct', this.selectedProduct);
-  }
+  ngOnInit(): void {}
 
   openEmployeeInfo(employeeInfo: any) {
     const componentRef = this.modal.open(EmployeeProfileComponent, {
