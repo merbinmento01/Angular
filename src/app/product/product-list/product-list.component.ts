@@ -106,6 +106,8 @@ export class ProductListComponent implements OnInit {
         if(index !== -1){
           this.filteredData.splice(index, 1);
           this.filteredData = [...this.filteredData];
+          this.selectedProduct = {};
+          this.emitSelectedProduct();
         }
       }
     })
